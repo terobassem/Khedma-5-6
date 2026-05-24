@@ -30,8 +30,23 @@ app.use('/api/posts', postRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/content', contentRoutes);
 
+if (process.env.NODE_ENV === "production") {
+  const distPath = path.join(__dirname, "../../frontend/dist");
+
+  app.use(express.static(distPath));
+
+  app.get(/^(?!\/api).*/, (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
+
 app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5001;
+
 app.listen(PORT, () => console.log(`الخادم يعمل على المنفذ ${PORT}`));
