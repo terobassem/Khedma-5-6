@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon backend/src/server.js",
     "start": "node backend/src/server.js",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend",
+    "build": "npm install --include=dev --prefix frontend && npm run build --prefix frontend",
     "seed": "node backend/src/seed/seedData.js",
     "create-admin": "node backend/src/seed/createAdmin.js"
   },
