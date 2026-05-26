@@ -38,7 +38,7 @@ const Register = () => {
         {fields.map((f) => (
           <div key={f.key}>
             <label className="block font-semibold mb-1">{f.label}</label>
-            <input type={f.type} className="input-field" value={form[f.key]} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} required min={f.key === 'age' ? 4 : undefined} max={f.key === 'age' ? 18 : undefined} />
+            <input type={f.type} className="input-field" value={form[f.key]} onChange={(e) => setForm({ ...form, [f.key]: e.target.value })} required min={f.key === 'age' ? 4 : undefined} max={f.key === 'age' ? 50 : undefined} />
           </div>
         ))}
         <button type="submit" disabled={loading} className="btn-primary w-full">{loading ? 'جاري التسجيل...' : 'تسجيل'}</button>
